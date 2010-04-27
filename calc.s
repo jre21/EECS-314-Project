@@ -192,7 +192,7 @@ exp:    beq $s3, $s2, malf      # Malformed input
         li.d $f12, 0.0          # Set $f12 to zero
         c.eq.d $f6, $f12        # Check if the base is 0
         bc1f econt0             # Continue if the base is not 0
-        c.eq.d $f4, $f12        # Check if the exponent is also 0
+        c.le.d $f4, $f12        # Check if the exponent is <= 0
         bc1f end                # If not, return 0
 
         la $a0, bad             # 0^0 is undefined.  Therefore, we
